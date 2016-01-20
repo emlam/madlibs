@@ -40,6 +40,7 @@ def greet_person():
 
 @app.route('/game')
 def show_game_form():
+
      game_choice = request.args.get("play-game")
 
      if game_choice == "no":
@@ -52,11 +53,14 @@ def mad_lib():
     
     input_person = request.args.get("person")
     input_color = request.args.get("color")
+    input_noun = request.args.get("noun")
+    input_adjective = request.args.get("adjective")
 
     return render_template("madlib.html",
                             person=input_person,
-                            color=input_color
-                             )
+                            color=input_color,
+                            noun=input_noun,
+                            adjective=input_adjective)
     
 
 
