@@ -1,4 +1,4 @@
-from random import choice
+from random import choice, sample
 
 from flask import Flask, render_template, request
 
@@ -32,11 +32,11 @@ def greet_person():
 
     player = request.args.get("person")
 
-    compliment = choice(AWESOMENESS)
+    input_compliments = sample(AWESOMENESS,3)
 
     return render_template("compliment.html",
                            person=player,
-                           compliment=compliment)
+                           compliments=input_compliments)
 
 @app.route('/game')
 def show_game_form():
@@ -57,6 +57,13 @@ def mad_lib():
     input_adjective = request.args.get("adjective")
     input_number = request.args.get("number")
     input_adjective2 = request.args.get("adjective2")
+    input_animals = request.args.getlist("animals")
+    if len(input_animals)==1:
+         input_animals = input_animals[0]
+    if len(input_animals)==2:
+         input_animals = input_animals[0] + " and " + input_animals[1]
+    if len(input_animals)==3:
+         input_animals = input_animals[0] + ", " + input_animals[1] + " and " + input_animals[2]
 
     return render_template("madlib.html",
                             person=input_person,
@@ -64,11 +71,9 @@ def mad_lib():
                             noun=input_noun,
                             adjective=input_adjective,
                             number=input_number,
-                            adjective2=input_adjective2)
+                            adjective2=input_adjective2,
+                            animals=input_animals)
     
-
-
-
 
 
 if __name__ == '__main__':

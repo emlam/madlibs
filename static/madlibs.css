@@ -2,3 +2,26 @@ body {
     background-color: #90C3D4;
     font-family: Lucidatypewriter, monospace;
 }
+
+.story-first-paragraph {
+    border: dashed;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+p {
+    margin: 25px;
+}
+
+
+.story-second-paragraph {
+    background-color: #C390D4;
+    height: 200px;
+    width: 200px;
+    margin: 20px;
+}
+
+.story-second-paragraph p {
+    margin: 25px;
+    margin-top: 20px;
+}
